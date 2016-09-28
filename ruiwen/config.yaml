@@ -1,4 +1,5 @@
 ---
+publishdir: "../public"
 baseurl: "https://ruiwenchua.com/"
 languageCode: "en-us"
 title: "Code and Random Hackery"
