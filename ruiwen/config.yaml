@@ -1,0 +1,17 @@
+---
+baseurl: "https://ruiwenchua.com/"
+languageCode: "en-us"
+title: "Code and Random Hackery"
+canonifyurls: true
+theme: "hyde"
+permalinks:
+  post: /:year/:month/:day/:title/
+params:
+  Subtitle: "Eh?"
+  AuthorName: "Ruiwen Chua"
+  GitHubUser: "ruiwen"
+  layoutReverse: true
+  description: "An exploration"
+taxonomies:
+  tag: "tags"
+...
