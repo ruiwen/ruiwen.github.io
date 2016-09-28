@@ -1,6 +1,6 @@
 ---
 publishdir: "../public"
-baseurl: "https://ruiwenchua.com/"
+baseurl: "https://ruiwen.github.io/"
 languageCode: "en-us"
 title: "Code and Random Hackery"
 canonifyurls: true
