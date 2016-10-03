@@ -155,6 +155,7 @@ code {
   color: #bf616a;
   background-color: #f9f9f9;
   border-radius: 3px;
+  white-space: pre;
 }
 pre {
   display: block;
@@ -168,6 +169,7 @@ pre {
   word-break: break-all;
   word-wrap: break-word;
   background-color: #f9f9f9;
+  overflow-x: scroll;
 }
 pre code {
   padding: 0;
