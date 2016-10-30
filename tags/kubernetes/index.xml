@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kubernetes on Code and Random Hackery</title>
+    <link>https://ruiwen.github.io/tags/kubernetes/</link>
+    <description>Recent content in Kubernetes on Code and Random Hackery</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 30 Oct 2016 23:30:02 +0800</lastBuildDate>
+    <atom:link href="https://ruiwen.github.io/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Kubernetes for small Organisations</title>
+      <link>https://ruiwen.github.io/2016/10/30/kubernetes-for-small-organisations/</link>
+      <pubDate>Sun, 30 Oct 2016 23:30:02 +0800</pubDate>
+      
+      <guid>https://ruiwen.github.io/2016/10/30/kubernetes-for-small-organisations/</guid>
+      <description>
+
+&lt;h1 id=&#34;kubernetes-for-small-organisations-is-it-worth-it&#34;&gt;Kubernetes for small Organisations: Is it worth it?&lt;/h1&gt;
+
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;//www.youtube.com/embed/zjVcUg1JTBk&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%;&#34; allowfullscreen frameborder=&#34;0&#34;&gt;&lt;/iframe&gt;
+ &lt;/div&gt;
+
+
+&lt;p&gt;I recently gave a talk at GeekcampSG 2016 about our ongoing experience with Kubernetes in Lomotif.&lt;/p&gt;
+
+&lt;p&gt;It wasn&amp;rsquo;t a technical deep-dive, so I didn&amp;rsquo;t talk very much about the implementation itself, but more about the experience in general, and the pitfalls that we came across. Hopefully, if you&amp;rsquo;re planning a move to Kubernetes, this talk could give you a heads up of a couple of gotchas that you&amp;rsquo;ll probably want to pay attention to before jumping in.&lt;/p&gt;
+
+&lt;p&gt;Also great thanks and a shout-out to the wonderful folk from &lt;a href=&#34;https://engineers.sg&#34;&gt;Engineers.SG&lt;/a&gt; who recorded and uploaded the talks from GeekcampSG! =)&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
