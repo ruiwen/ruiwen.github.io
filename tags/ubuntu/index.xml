@@ -7,7 +7,9 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 03 Oct 2016 01:30:42 +0800</lastBuildDate>
-    <atom:link href="https://ruiwen.github.io/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="https://ruiwen.github.io/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Ubuntu 16.04 on Raspberry Pi 3</title>
@@ -15,119 +17,9 @@
       <pubDate>Mon, 03 Oct 2016 01:30:42 +0800</pubDate>
       
       <guid>https://ruiwen.github.io/2016/10/03/ubuntu-16.04-on-raspberry-pi-3/</guid>
-      <description>
-
-&lt;p&gt;I recently wanted to unify my dev environments, including my (very handy!) Raspberry Pi 3.&lt;/p&gt;
-
-&lt;p&gt;I&amp;rsquo;d gotten started with it with a &lt;a href=&#34;https://www.raspberrypi.org/downloads/raspbian/&#34;&gt;Raspbian Jessie&lt;/a&gt;, but felt the new &lt;a href=&#34;https://ubuntu-pi-flavour-maker.org/xenial/ubuntu-minimal-16.04-server-armhf-raspberry-pi.img.xz.torrent&#34;&gt;Ubuntu 16.04&lt;/a&gt; was really more my speed. Thus began the journey to upgrade Pi OSes&lt;/p&gt;
-
-&lt;h1 id=&#34;images&#34;&gt;Images&lt;/h1&gt;
-
-&lt;p&gt;First up, finding the right image. The good thing about the Pi community is that there&amp;rsquo;s so much activity, and so many community images. The bad thing is, well, that there are so many community images that it&amp;rsquo;s sometimes hard to tell which is going to work.&lt;/p&gt;
-
-&lt;p&gt;Let me save you the trouble — &lt;a href=&#34;https://ubuntu-pi-flavour-maker.org/xenial/ubuntu-minimal-16.04-server-armhf-raspberry-pi.img.xz.torrent&#34;&gt;this one does&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;It&amp;rsquo;s a link to a &lt;code&gt;.torrent&lt;/code&gt; file from &lt;a href=&#34;https://ubuntu-pi-flavour-maker.org/&#34;&gt;Ubuntu Pi Flavour Maker&lt;/a&gt;. You&amp;rsquo;ll end up with a &lt;code&gt;.img.xz&lt;/code&gt; file which you&amp;rsquo;ll have to unpack (depending on your OS) to get the original &lt;code&gt;.img&lt;/code&gt; image.&lt;/p&gt;
-
-&lt;p&gt;After which, it&amp;rsquo;s a quick write to the prepared SD Card (I suggest formatting the card via your OS&amp;rsquo;s disk management tools, so you&amp;rsquo;ll want to back anything important up) with something similar to&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo dd bs=1m if=path_of_your_image.img of=/dev/diskn
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;(The official raspberrypi.org has &lt;a href=&#34;https://www.raspberrypi.org/documentation/installation/installing-images/README.md&#34;&gt;handy documentation on how you can write a Raspberry Pi &lt;code&gt;.img&lt;/code&gt; to your SD card&lt;/a&gt;.)&lt;/p&gt;
-
-&lt;h1 id=&#34;booting-up&#34;&gt;Booting Up&lt;/h1&gt;
-
-&lt;p&gt;Once you&amp;rsquo;re done writing the image to your SD card, pop it into your Pi, connect the peripherals, plug in the power, and&amp;hellip; &lt;em&gt;wait&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;At this stage, unless you have a configured ethernet connection all set up for your Pi and are confident of SSH&amp;rsquo;ing in, you&amp;rsquo;ll probably want a monitor and keyboard attached as well so you can work directly on the console after it boots.&lt;/p&gt;
-
-&lt;p&gt;If you don&amp;rsquo;t have a ready ethernet connection, keep in mind that there&amp;rsquo;s a script that waits for an address to be assigned to &lt;code&gt;eth0&lt;/code&gt; via DHCP, and times out only after 5 mins. If your Pi isn&amp;rsquo;t responsive after plugging the power in, grab a coffee or something.&lt;/p&gt;
-
-&lt;p&gt;After a while, your Pi should be running, and if you&amp;rsquo;ve got a monitor connected to it, you should have a login prompt ready to go.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Just in case — the default username and password for RPi Ubuntu images is usually: &lt;code&gt;ubuntu&lt;/code&gt; / &lt;code&gt;ubuntu&lt;/code&gt;&lt;/em&gt;&lt;/p&gt;
-
-&lt;h1 id=&#34;connecting-to-wifi&#34;&gt;Connecting to Wifi&lt;/h1&gt;
-
-&lt;p&gt;The next thing you&amp;rsquo;ll want to do is probably to connect your Pi to your wifi network. If you don&amp;rsquo;t, and already have an ethernet connection good to go, then feel free to skip the rest of this section.&lt;/p&gt;
-
-&lt;p&gt;Wireless connections on the RPi are handled by a package called &lt;code&gt;wpasupplicant&lt;/code&gt;. It&amp;rsquo;s not installed by default, so you&amp;rsquo;ll need to grab it with a familiar &lt;code&gt;apt-get install&lt;/code&gt;. This is also why you need an ethernet connection to at least get started.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Pro-tip: If your router/switch is too far away from where you have the rest of your RPi set up, bridging your desktop/laptop&amp;rsquo;s wifi connection over an adapter to an ethernet connection is something I found really handy.&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;You&amp;rsquo;ll also notice that if you entered &lt;code&gt;ifconfig&lt;/code&gt; at the prompt, the wireless interface &lt;code&gt;wlan0&lt;/code&gt; (by default) has not automatically come up on boot, so we&amp;rsquo;ll need to configure it to do so.&lt;/p&gt;
-
-&lt;p&gt;Find and edit the file &lt;code&gt;/etc/network/interfaces&lt;/code&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ sudo vim /etc/network/interfaces
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Then add a block to configure the &lt;code&gt;wlan0&lt;/code&gt; interface with the requisite wifi credentials&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;auto wlan0
-allow-hotplug wlan0
-iface wlan0 inet dhcp
-wpa-ssid &amp;quot;YourWifiSSIDHere&amp;quot;
-wpa-psk &amp;quot;y0uRs3cretw1f1p@55w0rdHere&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Save the file, and you should be able to restart the networking service with &lt;code&gt;sudo service networking restart&lt;/code&gt; and have the &lt;code&gt;wlan0&lt;/code&gt; interface come up.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;wlan0     Link encap:Ethernet  HWaddr b8:27:eb:49:2d:dc
-          inet addr:192.168.5.103  Bcast:192.168.5.255  Mask:255.255.255.0
-          inet6 addr: fe80::bf27:ebdf:fd41:369c/64 Scope:Link
-          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
-          RX packets:165550 errors:0 dropped:4 overruns:0 frame:0
-          TX packets:125635 errors:0 dropped:0 overruns:0 carrier:0
-          collisions:0 txqueuelen:1000
-          RX bytes:131148832 (131.1 MB)  TX bytes:26205017 (26.2 MB)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Ensure that the interface is properly connected by looking out for the &lt;code&gt;inet addr: 192.168.5.103&lt;/code&gt; line. This means that the RPi is connected and has successfully obtained an IP address on that interface.&lt;/p&gt;
-
-&lt;p&gt;To be extra certain, you might want to disconnect the ethernet connection at this stage and reboot the RPi and see if it comes up. Remember the IP address that was issued to &lt;code&gt;wlan0&lt;/code&gt; here, and use that to try to reconnect to the RPi after it reboots. Most routers will issue the same IP via DHCP to the same host if there is no contention, and on a home/small office network, this usually isn&amp;rsquo;t a problem. This Ubuntu image comes with OpenSSH installed and running, so you&amp;rsquo;ll just need to attempt to connect via SSH once it boots. &lt;em&gt;Keep in mind that even though the ethernet cable has been disconnected, the script that waits for the ethernet interface to come up still times out at 5 minutes, so you have at least that long to wait.&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;With that running, you&amp;rsquo;re good to go!&lt;/p&gt;
-
-&lt;h1 id=&#34;resizing-the-partition&#34;&gt;Resizing the partition&lt;/h1&gt;
-
-&lt;p&gt;Once your network is up and running rejoice! Until you run a &lt;code&gt;df -h&lt;/code&gt; or similar and realise that your partition seems a lot smaller that you thought it&amp;rsquo;d be.&lt;/p&gt;
-
-&lt;p&gt;I&amp;rsquo;m running my Pi off a 64GB microSD card, but when I first looked, &lt;code&gt;df&lt;/code&gt; was showing me only a &lt;em&gt;3GB&lt;/em&gt; drive thereabouts. Talk about a shock!&lt;/p&gt;
-
-&lt;p&gt;A quick google revealed that the Ubuntu image didn&amp;rsquo;t eat up the rest of my 60GB though. Turns out that RPi image is based off of a 4GB disk image, and when I &lt;code&gt;dd&lt;/code&gt;ed that over to my sdcard, it just wrote the exact same partition table as well.&lt;/p&gt;
-
-&lt;p&gt;Not to fear though, the &lt;a href=&#34;http://ubuntu-mate.org/raspberry-pi/&#34;&gt;Ubuntu MATE guys have a good writeup on how to resize your RPi&amp;rsquo;s partitions&lt;/a&gt; &lt;em&gt;(Search for &amp;ldquo;Re-size file system&amp;rdquo;)&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;In summary though, when you need to do is to delete the smaller ~4GB partition, and rewrite a larger version back to the partition table.&lt;/p&gt;
-
-&lt;p&gt;The mounted sdcard is recognised in the RPi usually as &lt;code&gt;/dev/mmcblk0&lt;/code&gt;, with the &lt;code&gt;/boot&lt;/code&gt; partition on &lt;code&gt;/dev/mmcblk0p1&lt;/code&gt; and &lt;code&gt;/dev/mmcblk0p2&lt;/code&gt;. We&amp;rsquo;ll need to use &lt;code&gt;fdisk&lt;/code&gt; to delete the partition on &lt;code&gt;/dev/mmcblk0p2&lt;/code&gt;, and rewrite it back as a larger one.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ sudo fdisk /dev/mmcblk0
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This gets you into &lt;code&gt;fdisk&lt;/code&gt;, where you can then &lt;code&gt;p&lt;/code&gt;rint the partition table, and &lt;code&gt;d&lt;/code&gt;elete partition &lt;code&gt;2&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Then, create a &lt;code&gt;n&lt;/code&gt;ew &lt;code&gt;p&lt;/code&gt;rimary partition, accepting the defaults &lt;code&gt;fdisk&lt;/code&gt; offers, which would be to use all the remaining space on the sdcard. Remember to &lt;code&gt;w&lt;/code&gt;rite the changes to disk before quitting &lt;code&gt;fdisk&lt;/code&gt;, otherwise your changes would not take effect.&lt;/p&gt;
-
-&lt;p&gt;Once that&amp;rsquo;s done, reboot the system.&lt;/p&gt;
-
-&lt;p&gt;You&amp;rsquo;ll notice if you run &lt;code&gt;df -h&lt;/code&gt; again once the Pi has booted, that it still says your data is sitting on a smaller ~4GB partition. &lt;em&gt;What gives?&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;Turns out that even though your partition has been resized, the &lt;em&gt;filesystem&lt;/em&gt; itself needs to be made aware of its comfy new environment and spread out accordingly.&lt;/p&gt;
-
-&lt;p&gt;With a simple&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ resize2fs /dev/mmcblk0p2
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;the filesystem is resized, and &lt;code&gt;df -h&lt;/code&gt; should finally show you the values you&amp;rsquo;ve been expecting all along.&lt;/p&gt;
-
-&lt;h1 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h1&gt;
-
-&lt;p&gt;Once all this is done, your RPi should be up and ready to use! Happy hacking!&lt;/p&gt;
-</description>
+      <description>I recently wanted to unify my dev environments, including my (very handy!) Raspberry Pi 3.
+I&amp;rsquo;d gotten started with it with a Raspbian Jessie, but felt the new Ubuntu 16.04 was really more my speed. Thus began the journey to upgrade Pi OSes
+Images First up, finding the right image. The good thing about the Pi community is that there&amp;rsquo;s so much activity, and so many community images. The bad thing is, well, that there are so many community images that it&amp;rsquo;s sometimes hard to tell which is going to work.</description>
     </item>
     
   </channel>

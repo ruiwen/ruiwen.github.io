@@ -6,8 +6,19 @@
     <description>Recent content in Kubernetes on Code and Random Hackery</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 30 Oct 2016 23:30:02 +0800</lastBuildDate>
-    <atom:link href="https://ruiwen.github.io/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 26 Aug 2017 18:00:00 +0800</lastBuildDate>
+    
+	<atom:link href="https://ruiwen.github.io/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Monitoring of a Kubernetes Cluster from the Outside with Prometheus</title>
+      <link>https://ruiwen.github.io/2017/08/26/monitoring-of-a-kubernetes-cluster-from-the-outside-with-prometheus/</link>
+      <pubDate>Sat, 26 Aug 2017 18:00:00 +0800</pubDate>
+      
+      <guid>https://ruiwen.github.io/2017/08/26/monitoring-of-a-kubernetes-cluster-from-the-outside-with-prometheus/</guid>
+      <description>When setting up a Kubernetes cluster, a Prometheus and Grafana setup is a great way to have to start monitoring your cluster health. From CPU and RAM stats, to filesystem usage, to even the number and type of requests that your cluster is serving. One thing however, is that most setups tend to assume that you&amp;rsquo;ll be deploying Prometheus within the cluster itself. To be sure, this is probably the easier way of settings things up.</description>
+    </item>
     
     <item>
       <title>Kubernetes for small Organisations</title>
@@ -15,22 +26,8 @@
       <pubDate>Sun, 30 Oct 2016 23:30:02 +0800</pubDate>
       
       <guid>https://ruiwen.github.io/2016/10/30/kubernetes-for-small-organisations/</guid>
-      <description>
-
-&lt;h1 id=&#34;kubernetes-for-small-organisations-is-it-worth-it&#34;&gt;Kubernetes for small Organisations: Is it worth it?&lt;/h1&gt;
-
-
-&lt;div style=&#34;position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;&#34;&gt;
-  &lt;iframe src=&#34;//www.youtube.com/embed/zjVcUg1JTBk&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%;&#34; allowfullscreen frameborder=&#34;0&#34;&gt;&lt;/iframe&gt;
- &lt;/div&gt;
-
-
-&lt;p&gt;I recently gave a talk at GeekcampSG 2016 about our ongoing experience with Kubernetes in Lomotif.&lt;/p&gt;
-
-&lt;p&gt;It wasn&amp;rsquo;t a technical deep-dive, so I didn&amp;rsquo;t talk very much about the implementation itself, but more about the experience in general, and the pitfalls that we came across. Hopefully, if you&amp;rsquo;re planning a move to Kubernetes, this talk could give you a heads up of a couple of gotchas that you&amp;rsquo;ll probably want to pay attention to before jumping in.&lt;/p&gt;
-
-&lt;p&gt;Also great thanks and a shout-out to the wonderful folk from &lt;a href=&#34;https://engineers.sg&#34;&gt;Engineers.SG&lt;/a&gt; who recorded and uploaded the talks from GeekcampSG! =)&lt;/p&gt;
-</description>
+      <description>Kubernetes for small Organisations: Is it worth it?   I recently gave a talk at GeekcampSG 2016 about our ongoing experience with Kubernetes in Lomotif.
+It wasn&amp;rsquo;t a technical deep-dive, so I didn&amp;rsquo;t talk very much about the implementation itself, but more about the experience in general, and the pitfalls that we came across. Hopefully, if you&amp;rsquo;re planning a move to Kubernetes, this talk could give you a heads up of a couple of gotchas that you&amp;rsquo;ll probably want to pay attention to before jumping in.</description>
     </item>
     
   </channel>
