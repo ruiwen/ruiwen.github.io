@@ -13,6 +13,7 @@ params:
   GitHubUser: "ruiwen"
   layoutReverse: true
   description: "An exploration"
+  disqusShortname: "ruiwen-co"
 taxonomies:
   tag: "tags"
 ...
