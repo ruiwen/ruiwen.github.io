@@ -16,4 +16,5 @@ params:
   disqusShortname: "ruiwen-co"
 taxonomies:
   tag: "tags"
+googleAnalytics: "UA-3601512-3"
 ...
