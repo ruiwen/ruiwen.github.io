@@ -3,7 +3,7 @@
 <head>
   <link href="http://gmpg.org/xfn/11" rel="profile">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="generator" content="Hugo 0.26" />
+  <meta name="generator" content="Hugo 0.38" />
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -71,6 +71,230 @@ ga('send', 'pageview');
       
   <div class="post">
     <h1 class="post-title">
+      <a href="https://ruiwen.github.io/2018/05/29/a-single-repo-for-statically-generated-sites-on-github-pages/">
+        A Single Repo for Statically Generated Sites on Github Pages
+      </a>
+    </h1>
+
+    <span class="post-date">Tue, May 29, 2018</span>
+
+    
+
+<p>There&rsquo;s a lot of talk about how easy it is to setup a statically-generated blog (such as this!) using a static site generator and hosting it on Github pages.</p>
+
+<p>In this post, we&rsquo;ll take a look at a simple <code>git</code> workflow that can be used to manage a statically-generated site, such as this.</p>
+
+<p>Github pages usually publish the content from the <code>master</code> branch of a git repo, and while some tips found online might suggest keeping the generated content and the source material in separate repos, it&rsquo;s easier to have them all in one project that can be managed all at the same time.</p>
+
+<p><em>For the rest of this post, we&rsquo;ll use the <a href="https://github.com/ruiwen/examplepage.github.io">examplepage repo</a> as an example. and assume we&rsquo;ll be using the <a href="https://gohugo.io">Hugo</a> blog generator.</em></p>
+
+<h1 id="basic-setup">Basic Setup</h1>
+
+<p>We&rsquo;ll first setup a new repo on Github to host the site. In this example, we&rsquo;re using <code>https://github.com/ruiwen/examplepage.github.io</code>.</p>
+
+<p>We&rsquo;ll also need to ensure that we <a href="https://gohugo.io/getting-started/installing/">have Hugo installed</a>.</p>
+
+<p>With that done, we can begin to setup our project directory. <code>hugo</code> provides a quick way to get started with that</p>
+
+<pre><code>$ hugo new site -f yaml examplepage.github.io
+Congratulations! Your new Hugo site is created in /home/ruiwen/projects/examplepage.github.io.
+
+Just a few more steps and you're ready to go:
+
+1. Download a theme into the same-named folder.
+   Choose a theme from https://themes.gohugo.io/, or
+   create your own with the &quot;hugo new theme &lt;THEMENAME&gt;&quot; command.
+2. Perhaps you want to add some content. You can add single files
+   with &quot;hugo new &lt;SECTIONNAME&gt;/&lt;FILENAME&gt;.&lt;FORMAT&gt;&quot;.
+3. Start the built-in live server via &quot;hugo server&quot;.
+
+Visit https://gohugo.io/ for quickstart guide and full documentation.
+
+
+$ ls examplepage.github.io/
+archetypes  config.yaml  content  data  layouts  static  themes
+</code></pre>
+
+<p><em>We use the <code>-f yaml</code> option to specify that we&rsquo;d like to use YAML as a configuration format. <code>hugo</code> defaults to TOML by default.</em></p>
+
+<p>To get started, you&rsquo;ll need to <a href="https://gohugo.io/getting-started/configuration/">configure hugo</a>, setting values for the <code>baseURL</code>, and <code>title</code> of the site, but that&rsquo;s beyond the scope of this blog post.</p>
+
+<p>For now, let&rsquo;s also create a simple blog post.</p>
+
+<pre><code>$ hugo new post/a-sample-post.md
+/home/ruiwen/projects/examplepage.github.io/content/post/a-sample-post.md created
+</code></pre>
+
+<p>You&rsquo;ll notice that new content is rooted at the <code>content/</code> directory, and all we need to do is to specify the path under that, eg. <code>post/a-sample-post.md</code>.</p>
+
+<p>We&rsquo;ll also add some content to the new post.</p>
+
+<pre><code>$ echo &quot;Here's a sample post! Welcome to our sample page!&quot; &gt;&gt; content/post/a-sample-post.md
+$ cat content/posts/a-sample-post.md
+---
+title: &quot;A Sample Post&quot;
+date: 2018-05-29T17:57:14+08:00
+draft: true
+---
+
+Here's a sample post! Welcome to our sample page!
+</code></pre>
+
+<p>Before we publish the post, we&rsquo;ll need to <a href="https://gohugo.io/getting-started/quick-start/#step-3-add-a-theme">configure a theme</a> for the site. Check out <a href="https://themes.gohugo.io/">themes.gohugo.io</a> for themes. In our example, we&rsquo;re using <a href="https://themes.gohugo.io/hyde-hyde/"><code>hyde-hyde</code></a>.</p>
+
+<pre><code>$ pwd
+/home/ruiwen/projects/examplepage.github.io
+$ git clone https://github.com/htr3n/hyde-hyde.git themes/hyde-hyde
+Cloning into './hyde-hyde'...
+remote: Counting objects: 597, done.
+remote: Compressing objects: 100% (4/4), done.
+remote: Total 597 (delta 0), reused 2 (delta 0), pack-reused 592
+Receiving objects: 100% (597/597), 1.89 MiB | 809.00 KiB/s, done.
+Resolving deltas: 100% (310/310), done.
+Checking connectivity... done.
+</code></pre>
+
+<p>Next, edit <code>config.yaml</code> at the root of the project, and include <code>theme: hyde-hyde</code> at the bottom.</p>
+
+<p>At this point, we&rsquo;re almost ready to publish the blog! We just need to remove the <code>draft: true</code> line in the post, and we&rsquo;re good to go.</p>
+
+<p>To see what your site would look like, run the dev server, and navigate to <code>http://localhost:1313</code></p>
+
+<pre><code>$ hugo server
+</code></pre>
+
+<h1 id="committing-to-git">Committing to <code>git</code></h1>
+
+<p>Next up, we&rsquo;ll want to set up our git repo.</p>
+
+<pre><code>$ git init
+Initialized empty Git repository in /home/ruiwen/projects/examplepage.github.io/.git/
+$ git remote add github https://github.com/ruiwen/examplepage.github.io
+</code></pre>
+
+<p>First, we want to create an initial empty commit. This will be our repo&rsquo;s starting point, and allow us to manage two different aspects of the site in the same repo.</p>
+
+<pre><code>$ git commit --allow-empty -m &quot;Initial empty commit&quot;
+[master (root-commit) d9c0248] Initial empty commit
+</code></pre>
+
+<p>We&rsquo;ll want to create a new branch, that is <em>not</em> <code>master</code>. For this example, we use <code>source</code></p>
+
+<pre><code>$ git checkout -b source
+Switched to a new branch 'source'
+</code></pre>
+
+<p>Then we add all the files</p>
+
+<pre><code>$ git add .
+$ git commit -m &quot;New post: A sample post&quot;
+[source 2f14616] New post: A sample post
+4 files changed, 21 insertions(+)
+create mode 100644 archetypes/default.md
+create mode 100644 config.yaml
+create mode 100644 content/post/a-sample-post.md
+create mode 160000 themes/hyde-hyde
+$ git log --oneline --graph --decorate --all
+* 2f14616 New post: A sample post  (HEAD -&gt; source) [Ruiwen Chua 1 second ago]
+* d9c0248 Initial empty commit  (master) [Ruiwen Chua 60 seconds ago]
+</code></pre>
+
+<p>We see that the source files have been committed to the <code>source</code> branch.</p>
+
+<p>Now, because Github pages deploys content from the <code>master</code> branch, we want a) the fully rendered static files to reside in the <code>master</code> branch, and b) none of the source files to reside in the <code>master</code> branch. Hugo renders to <code>public/</code> by default, so we&rsquo;ll want make sure that our <code>public/</code> directory represents our <code>master</code> branch.</p>
+
+<h1 id="setting-public-as-our-master-branch">Setting <code>public/</code> as our <code>master</code> branch</h1>
+
+<p>We&rsquo;ll first make <code>public/</code> the home of our <code>master</code> branch. <code>git</code> has a wonderful tool that allows us to checkout a branch into its own directory that resides right alongside the rest of the repo. We&rsquo;ll use <code>git worktree</code> to make this happen.</p>
+
+<pre><code>$ git worktree add -b master public
+Preparing public (identifier public)
+HEAD is now at d9c0248 Initial empty commit
+</code></pre>
+
+<p>The interesting thing about <code>git worktree</code> is that it allows us to check out a completely different branch of the repo and have it checked out alongside any other branch we happen to be working on.</p>
+
+<pre><code>$ cd public
+$ ls
+$ git branch
+* master
+  source
+</code></pre>
+
+<p>In the <code>public/</code> directory, we don&rsquo;t see any files in the listing, because the <code>master</code> branch is currently pointing at our original empty commit. However, we do see that <code>git</code> recognises that we are, in fact, in the <code>master</code> branch, and not the <code>source</code> branch, where we were previously.</p>
+
+<p>Now that <code>public/</code> represents our <code>master</code> branch, we&rsquo;re going to get <code>hugo</code> to render our site into it.</p>
+
+<pre><code>$ hugo
+                   | EN
++------------------+----+
+  Pages            |  7
+  Paginator pages  |  0
+  Non-page files   |  0
+  Static files     |  8
+  Processed images |  0
+  Aliases          |  0
+  Sitemaps         |  1
+  Cleaned          |  0
+
+Total in 239 ms
+$ ls public/
+404.html  apple-touch-icon-144-precomposed.png  categories  css  favicon.png  img  index.html  index.xml  sitemap.xml  tags
+$ cd public
+$ git status
+On branch master
+Untracked files:
+  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
+
+        404.html
+        apple-touch-icon-144-precomposed.png
+        categories/
+        css/
+        favicon.png
+        img/
+        index.html
+        index.xml
+        sitemap.xml
+        tags/
+
+nothing added to commit but untracked files present (use &quot;git add&quot; to track)
+</code></pre>
+
+<p>We&rsquo;ll just commit the files in <code>public/</code>, and they should be added to our <code>master</code> branch</p>
+
+<pre><code>$ git add .
+$ git ci -m &quot;Publish: 20180529&quot;
+[master ff17216] Publish: 20180529
+ 16 files changed, 1288 insertions(+)
+ create mode 100644 404.html
+ create mode 100644 apple-touch-icon-144-precomposed.png
+ create mode 100644 categories/index.html
+ create mode 100644 categories/index.xml
+ create mode 100644 css/custom.css
+ create mode 100644 css/hyde.css
+ create mode 100644 css/poole.css
+ create mode 100644 css/print.css
+ create mode 100644 css/syntax.css
+ create mode 100644 favicon.png
+ create mode 100644 img/hugo.png
+ create mode 100644 index.html
+ create mode 100644 index.xml
+ create mode 100644 sitemap.xml
+ create mode 100644 tags/index.html
+ create mode 100644 tags/index.xml
+$ git lg
+* ff17216 Publish: 20180529  (HEAD -&gt; master) [Ruiwen Chua 2 seconds ago]
+| * 2f14616 New post: A sample post  (source) [Ruiwen Chua 54 seconds ago]
+|/
+* d9c0248 Initial empty commit  [Ruiwen Chua 2 minutes ago]
+</code></pre>
+
+<p>Now we see that the rendered site under <code>public/</code> has been committed to the <code>master</code> branch, while the source material still remain on the <code>source</code> branch. Both branches branch from the initial empty commit we made, and both branches can exist simultaneously in the same working environment, thanks to <code>git worktree</code>. This suits <code>hugo</code>&rsquo;s publishing workflow pretty well, allowing us to render straight into our <code>master</code> branch for committing.</p>
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
       <a href="https://ruiwen.github.io/2017/08/26/monitoring-of-a-kubernetes-cluster-from-the-outside-with-prometheus/">
         Monitoring of a Kubernetes Cluster from the Outside with Prometheus
       </a>
@@ -118,7 +342,7 @@ ga('send', 'pageview');
 <p>It&rsquo;s not commonly mentioned in the general Kubernetes documentation, but APIServer does allow you to make rquests directly to the pods within the cluster.</p>
 
 
-<figure >
+<figure>
     
         <img src="https://ruiwen.github.io/img/kubernetes-api-get.png" alt="It&#39;s hardly clear what you&#39;re supposed to do with this, and the lack of documented examples don&#39;t help either" />
     
@@ -285,7 +509,7 @@ T4LmAndOiuaZvK29CCqNwJ1APA==
 
 
 <div style="position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;">
-  <iframe src="//www.youtube.com/embed/zjVcUg1JTBk" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" allowfullscreen frameborder="0"></iframe>
+  <iframe src="//www.youtube.com/embed/zjVcUg1JTBk" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" allowfullscreen frameborder="0" title="YouTube Video"></iframe>
  </div>
 
 

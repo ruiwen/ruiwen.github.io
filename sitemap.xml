@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://ruiwen.github.io/2018/05/29/a-single-repo-for-statically-generated-sites-on-github-pages/</loc>
+    <lastmod>2018-05-29T22:45:00+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://ruiwen.github.io/2017/08/26/monitoring-of-a-kubernetes-cluster-from-the-outside-with-prometheus/</loc>
     <lastmod>2017-08-26T18:00:00+08:00</lastmod>
   </url>
@@ -18,8 +23,14 @@
   </url>
   
   <url>
+    <loc>https://ruiwen.github.io/tags/blogging/</loc>
+    <lastmod>2018-05-29T22:45:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://ruiwen.github.io/</loc>
-    <lastmod>2017-08-26T18:00:00+08:00</lastmod>
+    <lastmod>2018-05-29T22:45:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -32,6 +43,24 @@
   <url>
     <loc>https://ruiwen.github.io/tags/geekcampsg/</loc>
     <lastmod>2016-10-30T23:30:02+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ruiwen.github.io/tags/git/</loc>
+    <lastmod>2018-05-29T22:45:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ruiwen.github.io/tags/github/</loc>
+    <lastmod>2018-05-29T22:45:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ruiwen.github.io/tags/hugo/</loc>
+    <lastmod>2018-05-29T22:45:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -55,7 +84,7 @@
   
   <url>
     <loc>https://ruiwen.github.io/post/</loc>
-    <lastmod>2017-08-26T18:00:00+08:00</lastmod>
+    <lastmod>2018-05-29T22:45:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -79,7 +108,7 @@
   
   <url>
     <loc>https://ruiwen.github.io/tags/</loc>
-    <lastmod>2017-08-26T18:00:00+08:00</lastmod>
+    <lastmod>2018-05-29T22:45:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
