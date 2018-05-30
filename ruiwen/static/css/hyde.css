@@ -65,7 +65,7 @@ html {
     top: 0;
     left: 0;
     bottom: 0;
-    width: 18rem;
+    width: 24rem;
     text-align: left;
   }
 }
@@ -87,6 +87,8 @@ html {
 .sidebar-nav {
   padding-left: 0;
   list-style: none;
+  text-indent: -10px;
+
 }
 .sidebar-nav-item {
   display: block;
