@@ -9,6 +9,7 @@ Tags:
 - devops
 - prometheus
 - monitoring
+menu: main
 date: 2017-08-26T18:00:00+08:00
 title: Monitoring of a Kubernetes Cluster from the Outside with Prometheus
 ---

@@ -10,6 +10,7 @@ Tags:
 - blogging
 - github
 - git
+menu: main
 date: 2018-05-29T22:45:00+08:00
 title: A Single Repo for Statically Generated Sites on Github Pages
 ---
