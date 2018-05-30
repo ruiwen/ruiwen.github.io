@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Github on Code and Random Hackery</title>
-    <link>https://ruiwen.github.io/tags/github/</link>
+    <link>https://ruiwenchua.com/tags/github/</link>
     <description>Recent content in Github on Code and Random Hackery</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 29 May 2018 22:45:00 +0800</lastBuildDate>
     
-	<atom:link href="https://ruiwen.github.io/tags/github/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://ruiwenchua.com/tags/github/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>A Single Repo for Statically Generated Sites on Github Pages</title>
-      <link>https://ruiwen.github.io/2018/05/29/a-single-repo-for-statically-generated-sites-on-github-pages/</link>
+      <link>https://ruiwenchua.com/2018/05/29/a-single-repo-for-statically-generated-sites-on-github-pages/</link>
       <pubDate>Tue, 29 May 2018 22:45:00 +0800</pubDate>
       
-      <guid>https://ruiwen.github.io/2018/05/29/a-single-repo-for-statically-generated-sites-on-github-pages/</guid>
+      <guid>https://ruiwenchua.com/2018/05/29/a-single-repo-for-statically-generated-sites-on-github-pages/</guid>
       <description>There&amp;rsquo;s a lot of talk about how easy it is to setup a statically-generated blog (such as this!) using a static site generator and hosting it on Github pages.
 In this post, we&amp;rsquo;ll take a look at a simple git workflow that can be used to manage a statically-generated site, such as this.
 Github pages usually publish the content from the master branch of a git repo, and while some tips found online might suggest keeping the generated content and the source material in separate repos, it&amp;rsquo;s easier to have them all in one project that can be managed all at the same time.</description>

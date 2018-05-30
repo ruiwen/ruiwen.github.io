@@ -2,138 +2,138 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Code and Random Hackery</title>
-    <link>https://ruiwen.github.io/tags/</link>
+    <link>https://ruiwenchua.com/tags/</link>
     <description>Recent content in Tags on Code and Random Hackery</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 29 May 2018 22:45:00 +0800</lastBuildDate>
     
-	<atom:link href="https://ruiwen.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://ruiwenchua.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Blogging</title>
-      <link>https://ruiwen.github.io/tags/blogging/</link>
+      <link>https://ruiwenchua.com/tags/blogging/</link>
       <pubDate>Tue, 29 May 2018 22:45:00 +0800</pubDate>
       
-      <guid>https://ruiwen.github.io/tags/blogging/</guid>
+      <guid>https://ruiwenchua.com/tags/blogging/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Devops</title>
-      <link>https://ruiwen.github.io/tags/devops/</link>
+      <link>https://ruiwenchua.com/tags/devops/</link>
       <pubDate>Sat, 26 Aug 2017 18:00:00 +0800</pubDate>
       
-      <guid>https://ruiwen.github.io/tags/devops/</guid>
+      <guid>https://ruiwenchua.com/tags/devops/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Geekcampsg</title>
-      <link>https://ruiwen.github.io/tags/geekcampsg/</link>
+      <link>https://ruiwenchua.com/tags/geekcampsg/</link>
       <pubDate>Sun, 30 Oct 2016 23:30:02 +0800</pubDate>
       
-      <guid>https://ruiwen.github.io/tags/geekcampsg/</guid>
+      <guid>https://ruiwenchua.com/tags/geekcampsg/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Git</title>
-      <link>https://ruiwen.github.io/tags/git/</link>
+      <link>https://ruiwenchua.com/tags/git/</link>
       <pubDate>Tue, 29 May 2018 22:45:00 +0800</pubDate>
       
-      <guid>https://ruiwen.github.io/tags/git/</guid>
+      <guid>https://ruiwenchua.com/tags/git/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Github</title>
-      <link>https://ruiwen.github.io/tags/github/</link>
+      <link>https://ruiwenchua.com/tags/github/</link>
       <pubDate>Tue, 29 May 2018 22:45:00 +0800</pubDate>
       
-      <guid>https://ruiwen.github.io/tags/github/</guid>
+      <guid>https://ruiwenchua.com/tags/github/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Hugo</title>
-      <link>https://ruiwen.github.io/tags/hugo/</link>
+      <link>https://ruiwenchua.com/tags/hugo/</link>
       <pubDate>Tue, 29 May 2018 22:45:00 +0800</pubDate>
       
-      <guid>https://ruiwen.github.io/tags/hugo/</guid>
+      <guid>https://ruiwenchua.com/tags/hugo/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Infrastructure</title>
-      <link>https://ruiwen.github.io/tags/infrastructure/</link>
+      <link>https://ruiwenchua.com/tags/infrastructure/</link>
       <pubDate>Sun, 30 Oct 2016 23:30:02 +0800</pubDate>
       
-      <guid>https://ruiwen.github.io/tags/infrastructure/</guid>
+      <guid>https://ruiwenchua.com/tags/infrastructure/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Kubernetes</title>
-      <link>https://ruiwen.github.io/tags/kubernetes/</link>
+      <link>https://ruiwenchua.com/tags/kubernetes/</link>
       <pubDate>Sat, 26 Aug 2017 18:00:00 +0800</pubDate>
       
-      <guid>https://ruiwen.github.io/tags/kubernetes/</guid>
+      <guid>https://ruiwenchua.com/tags/kubernetes/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Monitoring</title>
-      <link>https://ruiwen.github.io/tags/monitoring/</link>
+      <link>https://ruiwenchua.com/tags/monitoring/</link>
       <pubDate>Sat, 26 Aug 2017 18:00:00 +0800</pubDate>
       
-      <guid>https://ruiwen.github.io/tags/monitoring/</guid>
+      <guid>https://ruiwenchua.com/tags/monitoring/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Prometheus</title>
-      <link>https://ruiwen.github.io/tags/prometheus/</link>
+      <link>https://ruiwenchua.com/tags/prometheus/</link>
       <pubDate>Sat, 26 Aug 2017 18:00:00 +0800</pubDate>
       
-      <guid>https://ruiwen.github.io/tags/prometheus/</guid>
+      <guid>https://ruiwenchua.com/tags/prometheus/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Raspberry Pi</title>
-      <link>https://ruiwen.github.io/tags/raspberry-pi/</link>
+      <link>https://ruiwenchua.com/tags/raspberry-pi/</link>
       <pubDate>Mon, 03 Oct 2016 01:30:42 +0800</pubDate>
       
-      <guid>https://ruiwen.github.io/tags/raspberry-pi/</guid>
+      <guid>https://ruiwenchua.com/tags/raspberry-pi/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Raspberry Pi 3</title>
-      <link>https://ruiwen.github.io/tags/raspberry-pi-3/</link>
+      <link>https://ruiwenchua.com/tags/raspberry-pi-3/</link>
       <pubDate>Mon, 03 Oct 2016 01:30:42 +0800</pubDate>
       
-      <guid>https://ruiwen.github.io/tags/raspberry-pi-3/</guid>
+      <guid>https://ruiwenchua.com/tags/raspberry-pi-3/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Ubuntu</title>
-      <link>https://ruiwen.github.io/tags/ubuntu/</link>
+      <link>https://ruiwenchua.com/tags/ubuntu/</link>
       <pubDate>Mon, 03 Oct 2016 01:30:42 +0800</pubDate>
       
-      <guid>https://ruiwen.github.io/tags/ubuntu/</guid>
+      <guid>https://ruiwenchua.com/tags/ubuntu/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Ubuntu 16.04</title>
-      <link>https://ruiwen.github.io/tags/ubuntu-16.04/</link>
+      <link>https://ruiwenchua.com/tags/ubuntu-16.04/</link>
       <pubDate>Mon, 03 Oct 2016 01:30:42 +0800</pubDate>
       
-      <guid>https://ruiwen.github.io/tags/ubuntu-16.04/</guid>
+      <guid>https://ruiwenchua.com/tags/ubuntu-16.04/</guid>
       <description></description>
     </item>
     
